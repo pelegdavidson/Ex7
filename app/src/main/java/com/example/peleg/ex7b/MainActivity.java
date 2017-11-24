@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
                 tv.setText("Welcome back Mr. "+data.getStringExtra("First Name")+ " " +  data.getStringExtra("Last Name"));
             }
             else
-                tv.setText("Welcome back Ms. "+data.getStringExtra("First Name")+ " " +  data.getStringExtra("Last Name"));
+                tv.setText("Welcome back Mrs. "+data.getStringExtra("First Name")+ " " +  data.getStringExtra("Last Name"));
         }
         Button bt = (Button)findViewById(R.id.bt1);
         bt.setText("Again...");
