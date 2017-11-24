@@ -2,6 +2,7 @@ package com.example.peleg.ex7b;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,15 +23,17 @@ public class MainActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==REGISTERCODE) {
-            TextView tv = (TextView) findViewById(R.id.tvIntro);
-            if (data.getStringExtra("Gender").compareTo("Male")==0) {
-                tv.setText("Welcome back Mr. "+data.getStringExtra("First Name")+ " " +  data.getStringExtra("Last Name"));
+        Resources res =getResources();
+        String gender="";
+        TextView tv = (TextView) findViewById(R.id.tvIntro);
+        if (requestCode == REGISTERCODE && resultCode == RESULT_OK) {
+            if (data.getStringExtra("Gender").compareTo("Male") == 0) {
+                gender ="Mr.";
+            } else
+                gender = "Mrs.";
             }
-            else
-                tv.setText("Welcome back Mrs. "+data.getStringExtra("First Name")+ " " +  data.getStringExtra("Last Name"));
+            tv.setText(res.getString(R.string.Welcome ,gender,data.getStringExtra("First Name"),data.getStringExtra("Last Name")));
+            Button bt = (Button) findViewById(R.id.bt1);
+            bt.setText(R.string.buttonwelcome);
         }
-        Button bt = (Button)findViewById(R.id.bt1);
-        bt.setText("Again...");
     }
-}

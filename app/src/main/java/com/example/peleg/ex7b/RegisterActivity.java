@@ -31,7 +31,7 @@ public class RegisterActivity extends Activity {
         RadioButton rb = (RadioButton)  findViewById(gender);
         String s3 = rb.getText().toString();
         intent.putExtra("Gender", s3);
-        setResult(1,intent);
+        setResult(RESULT_OK,intent);
         finish();
     }
 }
